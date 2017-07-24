@@ -60,7 +60,7 @@ Puppet::Type.newtype(:ssh_authorized_principal) do
   end
 
   # regular expression suitable for use by a ParsedFile based provider
-  REGEX = /^(?:(.+)\s+)?(ssh-dss|ssh-ed25519|ssh-rsa|ecdsa-sha2-nistp256|ecdsa-sha2-nistp384|ecdsa-sha2-nistp521)\s+([^ ]+)\s*(.*)$/
+  REGEX = /^[a-zA-Z0-9].*(\@|)[a-zA-Z0-9].*$/
   def self.keyline_regex
     REGEX
   end

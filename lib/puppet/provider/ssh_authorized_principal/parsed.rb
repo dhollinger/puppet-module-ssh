@@ -42,8 +42,8 @@ Puppet::Type.type(:ssh_authorized_principal).provide(
   end
 
   def flush
-    # raise Puppet::Error, "Cannot write SSH authorized keys without user"    unless @resource.should(:user)
-    # raise Puppet::Error, "User '#{@resource.should(:user)}' does not exist" unless Puppet::Util.uid(@resource.should(:user))
+    raise Puppet::Error, "Cannot write SSH authorized keys without user"    unless @resource.should(:user)
+    raise Puppet::Error, "User '#{@resource.should(:user)}' does not exist" unless Puppet::Util.uid(@resource.should(:user))
     self.class.backup_target(target)
 
     Puppet::Util::SUIDManager.asuser(@resource.should(:user)) do
